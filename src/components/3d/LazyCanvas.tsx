@@ -3,7 +3,6 @@
 import dynamic from "next/dynamic";
 import { Suspense, type ReactNode } from "react";
 import { useInViewport } from "@/lib/hooks/useInViewport";
-import { useIsMobile } from "@/lib/hooks/useIsMobile";
 import { useReducedMotion } from "@/lib/hooks/useReducedMotion";
 import type { ProductKind } from "./ProductModel";
 
@@ -14,7 +13,7 @@ interface LazyCanvasProps {
   modelUrl?: string;
   accent?: string;
   className?: string;
-  /** Static render shown on mobile, before the canvas enters the viewport, and while it loads. */
+  /** Shown before the canvas enters the viewport, and while it loads. */
   fallback: ReactNode;
 }
 
@@ -26,14 +25,11 @@ export default function LazyCanvas({
   fallback,
 }: LazyCanvasProps) {
   const [ref, isVisible] = useInViewport<HTMLDivElement>();
-  const isMobile = useIsMobile();
   const reducedMotion = useReducedMotion();
-
-  const shouldRender3D = isVisible && !isMobile;
 
   return (
     <div ref={ref} className={className}>
-      {shouldRender3D ? (
+      {isVisible ? (
         <Suspense fallback={fallback}>
           <Viewer3D
             kind={kind}
