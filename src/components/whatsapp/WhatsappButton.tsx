@@ -18,7 +18,7 @@ export default function WhatsappButton() {
       target="_blank"
       rel="noopener noreferrer"
       aria-label="Escríbenos por WhatsApp"
-      className="fixed z-40 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_28px_rgba(37,211,102,0.45)] transition-transform duration-300 ease-smooth hover:scale-105 active:scale-95 relative bottom-[calc(1.5rem+env(safe-area-inset-bottom))] right-[calc(1.25rem+env(safe-area-inset-right))] sm:bottom-[calc(2rem+env(safe-area-inset-bottom))] sm:right-[calc(2rem+env(safe-area-inset-right))]"
+      className="fixed bottom-[calc(1.5rem+env(safe-area-inset-bottom))] right-[calc(1.5rem+env(safe-area-inset-right))] z-[9999] flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] text-white shadow-[0_8px_28px_rgba(37,211,102,0.45)] transition-transform duration-300 ease-smooth hover:scale-105 active:scale-95"
     >
       <span
         className="absolute inset-0 rounded-full bg-[#25D366] opacity-60 [animation-duration:2.4s] animate-ping"
