@@ -6,6 +6,7 @@ import { useCartCount, useCartStore } from "@/lib/store/useCartStore";
 
 const NAV_LINKS = [
   { label: "Productos", href: "#productos" },
+  { label: "Arma tu kit", href: "#kit" },
   { label: "Tecnología", href: "#tecnologia" },
   { label: "Confianza", href: "#confianza" },
   { label: "Preguntas", href: "#faq" },

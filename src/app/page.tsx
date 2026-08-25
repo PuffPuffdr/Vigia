@@ -1,6 +1,7 @@
 import GlassNav from "@/components/nav/GlassNav";
 import Hero from "@/components/hero/Hero";
 import ProductsSection from "@/components/products/ProductsSection";
+import KitBuilderSection from "@/components/kit/KitBuilderSection";
 import TrustSection from "@/components/trust/TrustSection";
 import TrustBadges from "@/components/trust/TrustBadges";
 import FaqSection from "@/components/faq/FaqSection";
@@ -16,6 +17,7 @@ export default function Home() {
       <Hero />
       <TrustBadges />
       <ProductsSection />
+      <KitBuilderSection />
       <TrustSection />
       <FaqSection />
       <Footer />
