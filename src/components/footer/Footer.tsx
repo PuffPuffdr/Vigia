@@ -1,7 +1,9 @@
+const WHATSAPP_MESSAGE = "Hola VIGÍA, quiero información sobre sus cámaras de seguridad.";
+
 const CONTACT = {
-  phone: "+1 809-000-0000",
-  phoneHref: "tel:+18090000000",
-  whatsappHref: "https://wa.me/18090000000",
+  phone: "+1 849-527-6393",
+  phoneHref: "tel:+18495276393",
+  whatsappHref: `https://wa.me/18495276393?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`,
   email: "hola@vigiard.com",
   location: "Santo Domingo, RD",
 };
