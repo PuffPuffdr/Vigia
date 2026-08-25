@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-deep: #0a0e14;
+  --glass: rgba(255, 255, 255, 0.06);
+  --glass-brd: rgba(255, 255, 255, 0.12);
+  --text: #eef2f7;
+  --text-mute: #93a3b8;
+  --accent: #6ee7ff;
+  --accent-2: #a78bfa;
+  --warn: #f5a94e;
+}
+
+* {
+  border-color: var(--glass-brd);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--text);
+  background-color: var(--bg-deep);
+  background-image: radial-gradient(
+    120% 90% at 50% -10%,
+    #16202e 0%,
+    #0d131c 55%,
+    #080b11 100%
+  );
+  background-attachment: fixed;
+  font-family: var(--font-body), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Visible, on-brand keyboard focus ring everywhere */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+::selection {
+  background: rgba(110, 231, 255, 0.25);
+  color: var(--text);
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-glass backdrop-blur-xl border border-glass-brd shadow-glass;
+  }
+
+  .glass-nav {
+    @apply bg-white/[0.05] backdrop-blur-2xl border-b border-glass-brd;
+  }
+
+  .text-gradient-accent {
+    background: linear-gradient(120deg, #eef2f7 0%, #6ee7ff 60%, #a78bfa 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center rounded-full px-7 py-3.5
+      font-body font-medium text-bg-deep bg-accent
+      transition-all duration-300 ease-smooth
+      hover:shadow-glow-accent hover:brightness-110
+      active:scale-[0.98];
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center rounded-full px-7 py-3.5
+      font-body font-medium text-text glass-panel
+      transition-all duration-300 ease-smooth
+      hover:bg-white/[0.1] hover:border-white/20
+      active:scale-[0.98];
+  }
+
+  .field-input {
+    @apply w-full rounded-xl2 border border-glass-brd bg-white/[0.04] px-4 py-2.5
+      text-sm text-text placeholder:text-text-mute
+      transition-colors duration-300 ease-smooth
+      focus:outline-none focus:border-accent/50 focus:bg-white/[0.06];
+  }
+
+  .field-error {
+    @apply mt-1 text-xs text-warn;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
