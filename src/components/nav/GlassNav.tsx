@@ -7,6 +7,7 @@ import { useCartCount, useCartStore } from "@/lib/store/useCartStore";
 const NAV_LINKS = [
   { label: "Productos", href: "#productos" },
   { label: "Arma tu kit", href: "#kit" },
+  { label: "Armador 3D", href: "/armador-3d", badge: "Nuevo" },
   { label: "Tecnología", href: "#tecnologia" },
   { label: "Confianza", href: "#confianza" },
   { label: "Preguntas", href: "#faq" },
@@ -27,12 +28,7 @@ export default function GlassNav() {
         <ul className="hidden items-center gap-8 md:flex">
           {NAV_LINKS.map((link) => (
             <li key={link.href}>
-              <a
-                href={link.href}
-                className="text-sm text-text-mute transition-colors duration-300 hover:text-text"
-              >
-                {link.label}
-              </a>
+              <NavLink {...link} />
             </li>
           ))}
         </ul>
@@ -68,19 +64,58 @@ export default function GlassNav() {
           <ul className="flex flex-col p-2">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
-                <a
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className="block rounded-lg px-4 py-3 text-sm text-text-mute transition-colors duration-300 hover:bg-white/[0.06] hover:text-text"
-                >
-                  {link.label}
-                </a>
+                <NavLink {...link} mobile onClick={() => setOpen(false)} />
               </li>
             ))}
           </ul>
         </div>
       )}
     </header>
+  );
+}
+
+interface NavLinkProps {
+  label: string;
+  href: string;
+  badge?: string;
+  mobile?: boolean;
+  onClick?: () => void;
+}
+
+function NavLink({ label, href, badge, mobile, onClick }: NavLinkProps) {
+  const isRoute = href.startsWith("/");
+
+  const className = mobile
+    ? `flex items-center gap-2 rounded-lg px-4 py-3 text-sm transition-colors duration-300 hover:bg-white/[0.06] ${
+        badge ? "text-accent hover:text-accent" : "text-text-mute hover:text-text"
+      }`
+    : `flex items-center gap-1.5 text-sm transition-colors duration-300 ${
+        badge ? "text-accent hover:brightness-110" : "text-text-mute hover:text-text"
+      }`;
+
+  const content = (
+    <>
+      {label}
+      {badge && (
+        <span className="rounded-full bg-accent/15 px-1.5 py-0.5 font-mono text-[10px] font-medium uppercase tracking-wide text-accent">
+          {badge}
+        </span>
+      )}
+    </>
+  );
+
+  if (isRoute) {
+    return (
+      <Link href={href} onClick={onClick} className={className}>
+        {content}
+      </Link>
+    );
+  }
+
+  return (
+    <a href={href} onClick={onClick} className={className}>
+      {content}
+    </a>
   );
 }
 

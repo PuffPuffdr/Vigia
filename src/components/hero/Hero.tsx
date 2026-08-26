@@ -1,3 +1,4 @@
+import Link from "next/link";
 import LazyCanvas from "@/components/3d/LazyCanvas";
 import MouseGlow from "./MouseGlow";
 
@@ -24,6 +25,9 @@ export default function Hero() {
             <a href="#tecnologia" className="btn-secondary">
               Cómo funciona
             </a>
+            <Link href="/armador-3d" className="btn-secondary">
+              Arma tu kit en 3D
+            </Link>
           </div>
         </div>
 
