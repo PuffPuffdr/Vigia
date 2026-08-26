@@ -7,6 +7,8 @@ import RoomFloors from "./RoomFloors";
 import Furniture from "./Furniture";
 import Pool from "./Pool";
 import ZoneLabels from "./ZoneLabels";
+import CameraLayer from "./CameraLayer";
+import CameraHotspots from "./CameraHotspots";
 
 interface HouseSceneProps {
   lightweight?: boolean;
@@ -53,6 +55,8 @@ export default function HouseScene({ lightweight = false, reducedMotion = false 
       <Walls />
       <Furniture />
       <ZoneLabels />
+      <CameraLayer />
+      <CameraHotspots />
 
       <OrbitControls
         target={SCENE_TARGET}
