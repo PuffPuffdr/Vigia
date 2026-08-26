@@ -26,7 +26,7 @@ export default function Hero() {
               Cómo funciona
             </a>
             <Link href="/armador-3d" className="btn-secondary">
-              Arma tu kit en 3D
+              Arma tu kit
             </Link>
           </div>
         </div>
