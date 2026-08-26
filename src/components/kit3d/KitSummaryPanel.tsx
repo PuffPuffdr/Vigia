@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { PRODUCTS } from "@/lib/products";
+import { useCartStore } from "@/lib/store/useCartStore";
 import { CAMERA_ZONES, getCameraType, type CameraType } from "./cameraSpots";
 import { useKit3DStore } from "./useKit3DStore";
 
@@ -23,6 +24,8 @@ export default function KitSummaryPanel() {
   const cameraCounts = useKit3DStore((state) => state.cameraCounts);
   const isNightMode = useKit3DStore((state) => state.isNightMode);
   const toggleNightMode = useKit3DStore((state) => state.toggleNightMode);
+  const addItem = useCartStore((state) => state.addItem);
+  const openReservation = useCartStore((state) => state.openReservation);
 
   const coveredZones = CAMERA_ZONES.filter((room) => (cameraCounts[room.id] ?? 0) > 0);
   const coveragePct = Math.round((coveredZones.length / CAMERA_ZONES.length) * 100);
@@ -44,6 +47,13 @@ export default function KitSummaryPanel() {
     product: findProduct(productId),
     quantity,
   }));
+
+  function handleRequestQuote() {
+    for (const line of lines) {
+      for (let i = 0; i < line.quantity; i++) addItem(line.product);
+    }
+    openReservation();
+  }
 
   return (
     <div className="glass-panel flex flex-col gap-5 rounded-xl3 p-6 lg:sticky lg:top-24">
@@ -122,6 +132,10 @@ export default function KitSummaryPanel() {
                 funcione.
               </p>
             )}
+
+            <button type="button" onClick={handleRequestQuote} className="btn-primary w-full">
+              Solicitar cotización de mi kit
+            </button>
           </>
         ) : (
           <p className="text-sm text-text-mute">
