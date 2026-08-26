@@ -37,7 +37,7 @@ export const ROOMS: RoomBounds[] = [
   { id: "bano", label: "Baño", type: "interior", x: [1, 7], z: [-2.8, 0.3], floorColor: "#d3e3e8" },
 
   // exterior
-  { id: "marquesina", label: "Marquesina", type: "exterior", x: [-7, -2], z: [5, 8.5], floorColor: "#9aa3ad" },
+  { id: "marquesina", label: "Marquesina / Garaje", type: "exterior", x: [-7, -2], z: [5, 8.5], floorColor: "#9aa3ad" },
   { id: "jardin", label: "Jardín", type: "exterior", x: [-8, -2], z: [-12, -6], floorColor: "#5c7d52" },
   { id: "piscina", label: "Piscina", type: "exterior", x: [-2, 4], z: [-12, -6], floorColor: "#c7cdd4" },
   { id: "patio_trasero", label: "Patio trasero", type: "exterior", x: [4, 8], z: [-12, -6], floorColor: "#b7bcc2" },

@@ -5,6 +5,8 @@ import { OrbitControls } from "@react-three/drei";
 import Walls from "./Walls";
 import RoomFloors from "./RoomFloors";
 import Furniture from "./Furniture";
+import Pool from "./Pool";
+import ZoneLabels from "./ZoneLabels";
 
 interface HouseSceneProps {
   lightweight?: boolean;
@@ -47,8 +49,10 @@ export default function HouseScene({ lightweight = false, reducedMotion = false 
       </mesh>
 
       <RoomFloors />
+      <Pool />
       <Walls />
       <Furniture />
+      <ZoneLabels />
 
       <OrbitControls
         target={SCENE_TARGET}
