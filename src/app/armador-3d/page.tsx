@@ -4,6 +4,7 @@ import CartDrawer from "@/components/cart/CartDrawer";
 import ReservationModal from "@/components/cart/ReservationModal";
 import WhatsappButton from "@/components/whatsapp/WhatsappButton";
 import HouseCanvas from "@/components/kit3d/HouseCanvas";
+import KitSummaryPanel from "@/components/kit3d/KitSummaryPanel";
 
 export const metadata: Metadata = {
   title: "Armador de Kit 3D — VIGÍA",
@@ -25,12 +26,15 @@ export default function Kit3DPage() {
             Recorre tu casa, arma tu sistema.
           </h1>
           <p className="text-balance text-text-mute">
-            Gira y acerca la casa para explorarla desde cualquier ángulo. Muy pronto vas a
-            poder tocar cada zona para agregar cámaras y ver la cobertura en tiempo real.
+            Gira y acerca la casa para explorarla. Toca el + sobre cualquier zona para agregar
+            cámaras y mira la cobertura y el kit armarse en tiempo real.
           </p>
         </div>
 
-        <HouseCanvas />
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_360px] lg:items-start">
+          <HouseCanvas />
+          <KitSummaryPanel />
+        </div>
       </section>
 
       <CartDrawer />

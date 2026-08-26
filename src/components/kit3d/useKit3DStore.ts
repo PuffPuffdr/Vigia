@@ -5,10 +5,13 @@ interface Kit3DState {
   cameraCounts: Record<string, number>;
   incrementCamera: (zoneId: string) => void;
   decrementCamera: (zoneId: string) => void;
+  isNightMode: boolean;
+  toggleNightMode: () => void;
 }
 
 export const useKit3DStore = create<Kit3DState>((set) => ({
   cameraCounts: {},
+  isNightMode: false,
 
   incrementCamera: (zoneId) =>
     set((state) => ({
@@ -21,4 +24,6 @@ export const useKit3DStore = create<Kit3DState>((set) => ({
       if (current <= 0) return state;
       return { cameraCounts: { ...state.cameraCounts, [zoneId]: current - 1 } };
     }),
+
+  toggleNightMode: () => set((state) => ({ isNightMode: !state.isNightMode })),
 }));
