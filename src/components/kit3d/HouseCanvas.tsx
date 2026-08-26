@@ -14,7 +14,7 @@ export default function HouseCanvas() {
   const isSmallScreen = useIsSmallScreen();
 
   return (
-    <div ref={ref} className="relative h-[520px] w-full overflow-hidden rounded-xl3 sm:h-[600px] lg:h-[680px]">
+    <div ref={ref} className="relative h-[560px] w-full overflow-hidden rounded-xl3 sm:h-[660px] lg:h-[760px]">
       {isVisible ? (
         <Suspense fallback={<HouseFallback />}>
           <HouseScene lightweight={isSmallScreen} reducedMotion={reducedMotion} />
